@@ -1,0 +1,323 @@
+prueba de creacion de componentes estilos y explicacion de los mismos y la utilizacion de diferentes herramientas para 
+crear o mover palabras o frases de lugar cambio color, etc
+{ StatusBar } from 'expo-status-bar';
+ React,{useState} from 'react';
+ { StyleSheet, Text, View , TextInput,Dimensions} from 'react-native';
+// creacion de componente texto para react native 
+//const Texto = ( { style } ) => {
+  //const [texto,setTexto] = useState("hola mundo!")
+  //const actualizaTexto =() => {
+   // setTexto ('chao mundo!')
+  //}
+  //return (
+    // <Text style={[styles.text,style]} onPress={actualizaTexto }>{texto}</Text> 
+     //apertura de etiqueta seguido de contenido entre llaves y text cierra etiqueta 
+  //  )
+//}
+//const width {width, height} = dimensions.get('window').width
+export default function App() {
+  const [text,setText] = useState('chanchito feliz')
+ return (
+    <View style={styles.container}>
+      <text> Texto </text>
+      <TextInput 
+      style={styles.input} 
+      placeholder='escribe aca '
+      onChangeText={t => setText(t)}
+      defaultValue={text}
+      />
+    </View>
+  );
+ }
+
+  const styles = StyleSheet.create({
+    input:{
+      height:40,
+      borderBottomColor:'#ccc',
+      borderBottomWidth:1,
+      width:'100%',//para indicarle que utilie toda la pantalla poner % y sino sumar dimensions witdh:width
+      //width:width,
+    },
+    container:{
+      flex:1,
+      backgroundColor:'#fff',
+      alignItems:'center',
+      justifyContent:'center',
+    }
+  });
+//}
+
+//const styles = StyleSheet.create({
+  //text: {
+    //color:'white',
+    //fontSize: 24,
+  //  height:100,
+   // width: 100,
+  //},
+  //red:{
+    //flex: 1 ,
+    //backgroundColor:'red',
+  //},
+  //green:{
+   // flex:2, 
+   // backgroundColor:'green',
+  //},
+  //blue:{
+   // flex:3,
+    //backgroundColor:'blue',
+  //},
+ // container: {
+   // flex: 1, //ocupa el alto de la pantalla 
+  //  flexDirection: 'row',// row :cambia de arriba abajo a izquierda incluyendo reverse cambia de lado y column cambia la vertical 
+    //backgroundColor: '#fff',
+    //alignItems: 'center', // alinea en ejes de izquierda a derecha ej flex-start flex end center strech
+    //justifyContent: 'center', //alinear el contenido donde sea por ejemplo space-evenly space between
+ //},
+//});
+
+
+
+creacion de boton para IOS   agrega boton aceptar y cambia el texto inicial 
+
+
+
+import { StatusBar } from 'expo-status-bar';
+import React,{useState} from 'react';
+import { StyleSheet, Text, View , TextInput,Dimensions,Button} from 'react-native';
+// creacion de componente texto para react native 
+//const Texto = ( { style } ) => {
+  //const [texto,setTexto] = useState("hola mundo!")
+  //const actualizaTexto =() => {
+   // setTexto ('chao mundo!')
+  //}
+  //return (
+    // <Text style={[styles.text,style]} onPress={actualizaTexto }>{texto}</Text> 
+     //apertura de etiqueta seguido de contenido entre llaves y text cierra etiqueta 
+  //  )
+//}
+//const width {width, height} = dimensions.get('window').width
+export default function App() {
+  const [text,setText] = useState('chanchito feliz')
+  const [submit,setsubmit] = useState('')
+  
+ return (
+    <View style={styles.container}>
+      <text> Texto;{submit} </text>
+      <TextInput 
+      style={styles.input} 
+      placeholder='escribe aca '
+      onChangeText={t => setText(t)}
+      defaultValue={text}
+      />
+      <button  on press= {() => {
+        setSubmit(text)
+        alert('texto enviado con exito')
+      }} title= "aceptar"/>
+    </View>
+  );
+ }
+
+  const styles = StyleSheet.create({
+    input:{
+      height:40,
+      borderBottomColor:'#ccc',
+      borderBottomWidth:1,
+      width:'100%',//para indicarle que utilie toda la pantalla poner % y sino sumar dimensions witdh:width
+      //width:width,
+    },
+    container:{
+      flex:1,
+      backgroundColor:'#fff',
+      alignItems:'center',
+      justifyContent:'center',
+    }
+  });
+//}
+
+//const styles = StyleSheet.create({
+  //text: {
+    //color:'white',
+    //fontSize: 24,
+  //  height:100,
+   // width: 100,
+  //},
+  //red:{
+    //flex: 1 ,
+    //backgroundColor:'red',
+  //},
+  //green:{
+   // flex:2, 
+   // backgroundColor:'green',
+  //},
+  //blue:{
+   // flex:3,
+    //backgroundColor:'blue',
+  //},
+ // container: {
+   // flex: 1, //ocupa el alto de la pantalla 
+  //  flexDirection: 'row',// row :cambia de arriba abajo a izquierda incluyendo reverse cambia de lado y column cambia la vertical 
+    //backgroundColor: '#fff',
+    //alignItems: 'center', // alinea en ejes de izquierda a derecha ej flex-start flex end center strech
+    //justifyContent: 'center', //alinear el contenido donde sea por ejemplo space-evenly space between
+ //},
+//});
+return (
+    <View style={styles.container}>
+      <text> Texto;{submit} </text>
+      <TextInput 
+      style={styles.input} 
+      placeholder='escribe aca '
+      onChangeText={t => setText(t)}
+      defaultValue={text}
+      />
+      <TouchableNativeFeedback  
+     // underlayColor={'#999'}// cambia el color cuando presionamos el boton
+      background= {TouchableNativeFeedback.Ripple('#00f',true)}
+     activeOpacity={0,2}// cambia la opacidad del color al presionarlo   
+      on press= {() => {
+        setSubmit(text)
+        alert('texto enviado con exito')
+      }}>
+        <view style={styles.view}><text> aceptar </text></view>
+        </TouchableNativeFeedback>
+    </View>
+  );
+ }
+
+  const styles = StyleSheet.create({
+    view:{
+      flex:0.5,
+    },
+    input:{
+      height:40,
+      borderBottomColor:'#ccc',
+      borderBottomWidth:1,
+      width:'100%',//para indicarle que utilie toda la pantalla poner % y sino sumar dimensions witdh:width
+      //width:width,
+    },
+    container:{
+      flex:1,
+      backgroundColor:'#fff',
+      alignItems:'center',
+      justifyContent:'center',
+    }
+  });
+//}
+
+//const styles = StyleSheet.create({
+  //text: {
+    //color:'white',
+    //fontSize: 24,
+  //  height:100,
+   // width: 100,
+  //},
+  //red:{
+    //flex: 1 ,
+    //backgroundColor:'red',
+  //},
+  //green:{
+   // flex:2, 
+   // backgroundColor:'green',
+  //},
+  //blue:{
+   // flex:3,
+    //backgroundColor:'blue',
+  //},
+ // container: {
+   // flex: 1, //ocupa el alto de la pantalla 
+  //  flexDirection: 'row',// row :cambia de arriba abajo a izquierda incluyendo reverse cambia de lado y column cambia la vertical 
+    //backgroundColor: '#fff',
+    //alignItems: 'center', // alinea en ejes de izquierda a derecha ej flex-start flex end center strech
+    //justifyContent: 'center', //alinear el contenido donde sea por ejemplo space-evenly space between
+ //},
+//});
+return (
+    <View style={styles.container}>
+      <ScrollView sryle {styles.scrollview}>  
+      <text> Texto;{submit} </text>
+      <TextInput 
+      style={styles.input} 
+      placeholder='escribe aca '
+      onChangeText={t => setText(t)}
+      defaultValue={text}
+      />
+      <TouchableWithoutFeedback  
+        style = {styles.TouchableOpacity}
+     activeOpacity={0,2}  
+      on press= {() => {
+        setSubmit(text)
+        alert('texto enviado con exito')
+      }}>
+        <view style={styles.view}><text> aceptar </text></view>
+        </TouchableWithoutFeedback>
+        </ScrollView>
+    </View>
+    
+  );
+ }
+
+  const styles = StyleSheet.create({
+    TouchableOpacity:{
+      backgroundColor:'red',
+    },
+    view:{
+      height:40,
+      width:300,
+      alignItems:'center',
+      justifyContent:'center',
+    },
+    input:{
+      height:40,
+      borderBottomColor:'#ccc',
+      borderBottomWidth:1,
+      width:'100%'
+    },
+    container:{
+      flex:1,
+      backgroundColor:'#fff',
+      alignItems:'center',
+      justifyContent:'center',
+    },
+    scrollView:{
+      width: Dimensions.get('window').width,
+    }
+  });
+import { StatusBar } from 'expo-status-bar';
+import React,{useState} from 'react';
+import { StyleSheet, Text, View ,FlatList} from 'react-native';
+
+export default function App() {
+  const [text,setText] = useState('chanchito feliz')
+  const [submit,setsubmit] = useState('')
+  
+ return (
+    <View style={styles.container}>
+      <flatList
+      data={[
+        { key:'1',name:'nicolas' },
+        { key:'2' ,name:'maxi'},
+        { key:'3' ,name:'levi'},
+        { key:'4' ,name:'ulises'},
+        { key:'5',name:'martin' },
+      ]}
+      renderItem={({Item})=><text style={styles.item}>{item.name}</text>}/> 
+    </View>  
+  );// todo lo que este dsps de item. por ejemplo item.kay o item.name (propiedad ) van a aparecer en la flat list 
+ }
+
+  const styles = StyleSheet.create({
+    container:{
+      flex:1,
+      backgroundColor:'#fff',
+      alignItems:'strech',
+      justifyContent:'center',
+      paddingTop:22,
+    },
+    item: {
+      padding:10,
+      fontSize:22,
+      heigh:50,
+      borderBottomColor:'#ccc',
+      borderBottomWidth:1,
+    }
+  });
